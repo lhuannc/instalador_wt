@@ -269,35 +269,6 @@ EOF
 }
 
 #######################################
-# installs node
-# Arguments:
-#   None
-#######################################
-system_node_install() {
-  print_banner
-  printf "${WHITE} 💻 Instalando nodejs...${GRAY_LIGHT}"
-  printf "\n\n"
-
-  sleep 2
-
-  sudo su - root <<EOF
-  curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-  apt-get install -y nodejs
-  sleep 2
-  npm install -g npm@latest
-  sleep 2
-  curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /usr/share/keyrings/pgdg.gpg
-  echo "deb [arch=amd64 signed-by=/usr/share/keyrings/pgdg.gpg] http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list
-  sudo apt-get update -y
-  sudo apt-get update -y && sudo apt-get -y install postgresql
-  sleep 2
-  sudo timedatectl set-timezone America/Sao_Paulo
-  
-EOF
-
-  sleep 2
-}
-#######################################
 # installs docker
 # Arguments:
 #   None
